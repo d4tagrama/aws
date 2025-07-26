@@ -14,7 +14,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - go build -o /tmp/hello_world aws/CodeBuild
+      - go build -o /tmp/hello_world aws/CodeBuild/1-Basic
   post_build:
     commands:
       - echo Build completed on `date`
