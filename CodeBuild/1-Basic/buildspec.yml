@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing Go packages
+      - curl -O https://go.dev/dl/go1.24.5.linux-amd64.tar.gz
+      -  rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.5.linux-amd64.tar.gz
+  pre_build:
+    commands:
+      - echo Adding go compiler in PATH...
+      - export PATH=$PATH:/usr/local/go/bin
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - go build -o /tmp/hello_world aws/CodeBuild
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - /tmp/hello_world
+  name: builds/$CODEBUILD_BUILD_NUMBER/hello_world-$(date +%Y-%m-%d) 
