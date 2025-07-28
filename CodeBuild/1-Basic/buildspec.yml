@@ -12,9 +12,11 @@ phases:
       - export PATH=$PATH:/usr/local/go/bin
 
   build:
+    on-failure: ABORT
     commands:
       - echo Build started on `date`
       - cd CodeBuild/1-Basic
+      - go mod init
       - go build -o /tmp/hello_world
   post_build:
     commands:
