@@ -17,7 +17,7 @@ phases:
       - echo Build started on `date`
       - cd CodeBuild/1-Basic
       - go mod init hello
-      - go build -o /tmp/hello_world
+      - go build -o /tmp/hello_world hello.go
   post_build:
     commands:
       - echo Build completed on `date`
